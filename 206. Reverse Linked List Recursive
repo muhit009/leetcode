@@ -1,0 +1,13 @@
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        return gg(head,null);
+    }
+    private ListNode gg(ListNode head,ListNode prev){
+        if(head==null) return prev;
+        ListNode next= head.next;
+        head.next=prev;
+        return gg(next, head);
+    }
+
+        
+}
