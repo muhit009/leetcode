@@ -14,7 +14,47 @@ class Solution {
     }
 }
 ______________
-HASH MAP:: 
+HASH MAP:: origin
+class Solution {
+    public int longestPalindrome(String s) {
+        HashMap<Character, Integer> map= new HashMap<>();
+        char [] a= s.toCharArray();
+        int gg=0;
+        int goa=0;
+        if(s.length()==1)return 1;
+        for(int i=0; i<a.length;i++){
+            if(map.containsKey(a[i])){
+                map.put(a[i],map.get(a[i])+1);
+            }
+            else{
+                map.put(a[i],1);
+            }
+
+
+        }
+        //for (Map.Entry entry : map.entrySet()) {
+            //System.out.println(entry.getKey() + " " + entry.getValue());
+        //}
+        for( int entry : map.values()){
+            if(entry%2==0){
+                gg=gg+ entry;
+            }
+            else{
+                //gg++;
+                goa++;
+                gg= gg+ entry -1;
+            }
+            
+            
+
+        }
+        if(goa>0) gg= gg+1; 
+        return gg;
+     
+        
+    }
+}
+________________________________________________________________________
 class Solution {
     public int longestPalindrome(String s) {
         HashMap<Character, Integer> charCounts = new HashMap<>();
