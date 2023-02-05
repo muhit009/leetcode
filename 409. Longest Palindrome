@@ -1,0 +1,42 @@
+class Solution {
+    public int longestPalindrome(String s) {
+        int[] cout = new int[128];
+        for (char c: s.toCharArray())
+            cout[c]++;
+
+        int a = 0;
+        for (int i: cout) {
+            a += i / 2 * 2;
+            if (a % 2 == 0 && i % 2 == 1)
+                a++;
+        }
+        return a;
+    }
+}
+______________
+HASH MAP:: 
+class Solution {
+    public int longestPalindrome(String s) {
+        HashMap<Character, Integer> charCounts = new HashMap<>();
+        for (char c : s.toCharArray()) {
+            charCounts.put(c, charCounts.getOrDefault(c, 0) + 1);
+        }
+        
+        int palindromeLength = 0;
+        boolean hasOddCount = false;
+        for (int count : charCounts.values()) {
+            if (count % 2 == 0) {
+                palindromeLength += count;
+            } else {
+                hasOddCount = true;
+                palindromeLength += (count - 1);
+            }
+        }
+        
+        if (hasOddCount) {
+            palindromeLength++;
+        }
+        
+        return palindromeLength;
+    }
+}
