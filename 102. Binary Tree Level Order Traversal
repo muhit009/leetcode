@@ -1,0 +1,27 @@
+class Solution {
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        //root dhukabo array list e
+        //while loop-> level by level ...
+        // er jonne Q lagbe.. q!=null root dhukbe, left child e jabo
+        // right child e jabo... store korbo
+        // !null hole loop cholle
+        ArrayList <List<Integer>> a= new ArrayList<>();
+        Queue <TreeNode> q= new LinkedList<>();
+        if(root==null) return a;
+        q.offer(root);
+        while(!q.isEmpty()){
+            ArrayList<Integer> list= new ArrayList<>();
+            int size= q.size();
+
+            for(int i=0;i<size;i++){
+                TreeNode c= q.poll();
+                list.add(c.val);
+                if(c.left!=null) q.offer(c.left);
+                if(c.right!=null) q.offer(c.right);
+            }
+            a.add(list);
+        }
+        return a;
+
+    }
+}
