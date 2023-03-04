@@ -1,0 +1,24 @@
+class Solution {
+    public int[][] floodFill(int[][] image, int sr, int sc, int newColor) {
+        int m = image.length;
+        int n = image[0].length;
+        int oldColor = image[sr][sc];
+        if (oldColor == newColor) {
+            return image;
+        }
+        fill(image, sr, sc, oldColor, newColor, m, n);
+        return image;
+    }
+    
+    public void fill(int[][] image, int i, int j, int oldColor, int newColor, int m, int n) {
+        if (i < 0 || i >= m || j < 0 || j >= n || image[i][j] != oldColor) {
+            return;
+        }
+        //starting color, then traverse and color
+        image[i][j] = newColor;
+        fill(image, i-1, j, oldColor, newColor, m, n);
+        fill(image, i+1, j, oldColor, newColor, m, n);
+        fill(image, i, j-1, oldColor, newColor, m, n);
+        fill(image, i, j+1, oldColor, newColor, m, n);
+    }
+}
