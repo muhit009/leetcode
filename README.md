@@ -1,2 +1,2 @@
 # leetcode
-SOlution of 75 interview questions and so on..
+Solving Leetcode for coding prep
