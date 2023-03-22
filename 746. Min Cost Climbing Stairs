@@ -1,0 +1,37 @@
+class Solution {
+    public int minCostClimbingStairs(int[] cost) {
+        //dynamic programming
+        
+        int a= cost.length;
+        int [] d=new int [a];
+        d[0]= cost[0];
+        d[1]= cost[1];
+        
+        for(int i=2;i<a;i++){
+            // you must find the minimum between i-1 and i-2
+            //then add the cost[i] with the minimum
+            d[i]= Math.min(d[i-1],d[i-2])+cost[i];
+
+        }
+        return Math.min(d[a-1],d[a-2]);
+    }
+}
+complexity O(n)
+_____________
+
+class Solution {
+    public int minCostClimbingStairs(int[] cost) {
+        int n= cost.length;
+        int one= cost[0];
+        int two= cost[1];
+        for(int i=2;i<n;i++){
+            int x= cost[i]+Math.min(one,two);
+            one=two;
+            two=x;
+
+        }
+        return Math.min(one,two);
+
+   }
+   }
+   complexity: O(1)
