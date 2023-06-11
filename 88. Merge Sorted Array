@@ -1,0 +1,46 @@
+class Solution {
+    public void merge(int[] n1, int m, int[] n2, int n) {
+        //compare two arrays
+        // if n1[i]>n2[i]
+        // n1[i]<n2[i]
+        // n1[i]==n2[i]
+        int merge[] =new int[m+n];
+        int i=0; //for n1
+        int j=0; //for n2
+        int k=0; //for merge
+
+        //compare two arrays and in merge
+        while(i<m && j<n){
+            if(n1[i]>=n2[j]) {
+                merge[k]= n2[j];
+                j++;
+            }
+            else{
+                merge[k]= n1[i];
+                i++;
+            }
+            k++;
+
+
+        }
+        //if anything is not assigned from n1
+        while(i<m){
+            merge[k]= n1[i];
+            i++;
+            k++;
+        }
+        while(j<n){
+            merge[k]= n2[j];
+            j++;
+            k++;
+
+        }
+
+        for(int z=0;z<n1.length;z++){
+            n1[z]=merge[z];
+        }
+
+
+    }
+       
+}
